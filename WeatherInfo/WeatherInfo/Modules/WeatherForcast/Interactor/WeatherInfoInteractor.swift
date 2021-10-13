@@ -10,16 +10,15 @@ import RxSwift
 import RxRelay
 
 class WeatherInfoInteractor {
-    var service: WebServices
-    var disposedBag = DisposeBag()
-    var error = PublishSubject<Error>()
-    
+    private var service: WebServices
+    private var disposedBag = DisposeBag()
+    let error = PublishSubject<Error>()
+    let weatherDatas = PublishSubject<[WeatherData]>()
     var searchname: String = ""
-    init(service: NetworksAPI) {
+    
+    init(service: WebServices) {
         self.service = service
     }
-    
-    let weatherDatas = PublishSubject<[WeatherData]>()
     
     func getWeatherForcast(name: String) {
         let query = "?q=\(name)&ctn=\(7)&appid=\(ConstantKeys.kApplicationID)&unit=\(TemperatureUnit.celsius.rawValue)"

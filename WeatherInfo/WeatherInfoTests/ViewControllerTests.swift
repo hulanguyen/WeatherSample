@@ -10,11 +10,11 @@ import XCTest
 
 class ViewControllerTests: XCTestCase {
 
-    var sut: ViewController!
+    var sut: WeatherInfoViewController!
     
     override func setUpWithError() throws {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        sut = storyboard.instantiateViewController(withIdentifier: "ViewController") as? ViewController
+        
+        sut = Router().initialViewController()
         _ = sut.view
     }
 

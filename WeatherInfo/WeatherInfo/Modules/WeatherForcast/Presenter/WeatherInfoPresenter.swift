@@ -33,8 +33,7 @@ class WeatherInfoPresenter {
         interactor
             .weatherDatas
             .subscribe { [weak self] weatherData in
-                guard let self = self else {return}
-                self.listWeatherForcast.accept(weatherData)
+                self?.listWeatherForcast.accept(weatherData)
             } onError: { _ in
             } .disposed(by: disposeBag)
         
