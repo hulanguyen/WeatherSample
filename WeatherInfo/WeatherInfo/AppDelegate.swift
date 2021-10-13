@@ -10,8 +10,7 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         URLCache.shared = URLCache(
@@ -19,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             diskCapacity: 500*1024*1024,
             diskPath: nil
         )
+        
+       
         return true
     }
 

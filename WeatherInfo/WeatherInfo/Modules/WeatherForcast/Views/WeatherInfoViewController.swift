@@ -1,26 +1,35 @@
 //
-//  ViewController.swift
+//  WeatherInfoViewController.swift
 //  WeatherInfo
 //
-//  Created by Lam Nguyen Huu (VN) on 11/10/2021.
+//  Created by Lam Nguyen Huu (VN) on 13/10/2021.
 //
 
 import UIKit
 import RxSwift
 
-class ViewController: UIViewController {
+class WeatherInfoViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    let viewModel = WeatherInfoViewModel(service: NetworksAPI())
+    let presenter: WeatherInfoPresenter
     let disposeBag = DisposeBag()
+    
+    init(presenter: WeatherInfoPresenter) {
+        self.presenter = presenter
+        super.init(nibName: "WeatherInfoViewController", bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
         bindViewModel()
-        viewModel.getWeatherForcast(name: "saigon")
+        presenter.loadWeatherInfo(name: "saigon")
         
     }
 
@@ -42,24 +51,23 @@ class ViewController: UIViewController {
     }
     
     func bindViewModel() {
-        viewModel.weatherDatas
+        presenter.listWeatherForcast
             .observe(on: MainScheduler.instance)
             .subscribe { [weak self] _ in
-            self?.tableView.reloadData()
+                self?.tableView.reloadData()
             }.disposed(by: disposeBag)
         
         bindErrorData()
     }
     
     func bindErrorData() {
-        viewModel
+        presenter
             .error
             .observe(on: MainScheduler.instance)
             .subscribe { [weak self] error in
-            self?.handleErrorMessage(error: error)
-        } onError: { _ in
-        }
-        .disposed(by: disposeBag)
+                self?.handleErrorMessage(error: error)
+            }
+            .disposed(by: disposeBag)
     }
     
     func handleErrorMessage(error: Error) {
@@ -90,14 +98,14 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.weatherDatas.value.count
+        presenter.listWeatherForcast.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ConstantKeys.kWeatherInfoCellReuseIdentifier, for: indexPath) as! WeatherInfoTableViewCell
-        cell.setup(data: viewModel.weatherDatas.value[indexPath.row])
+        cell.setup(data: presenter.listWeatherForcast.value[indexPath.row])
         return cell
     }
     
@@ -106,19 +114,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ViewController: UISearchBarDelegate {
+extension WeatherInfoViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.searchBar.showsCancelButton = true
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.searchname = searchText
+        presenter.searchName = searchText
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if viewModel.searchname.count >= 3 {
-            viewModel.getWeatherForcast(name: viewModel.searchname)
+        if presenter.searchName.count >= 3 {
+            presenter.loadWeatherInfo(name: presenter.searchName)
         } else {
             showAlert(message: "Search term length must be from 3 characters or above")
         }
