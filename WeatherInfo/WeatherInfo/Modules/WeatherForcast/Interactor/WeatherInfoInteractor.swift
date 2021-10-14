@@ -21,7 +21,7 @@ class WeatherInfoInteractor {
     }
     
     func getWeatherForcast(name: String) {
-        let query = "?q=\(name)&ctn=\(7)&appid=\(ConstantKeys.kApplicationID)&unit=\(TemperatureUnit.celsius.rawValue)"
+        let query = "?q=\(name)&cnt=\(7)&appid=\(ConstantKeys.kApplicationID)&units=\(TemperatureUnit.celsius.rawValue)"
         
         let api = WeatherInfoAPI(service: service)
         api.startRequest(query: query)

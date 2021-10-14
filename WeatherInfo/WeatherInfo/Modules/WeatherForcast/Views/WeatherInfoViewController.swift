@@ -87,12 +87,12 @@ class WeatherInfoViewController: UIViewController {
         case .unknowError:
             message = "Unknow issue"
         }
-        showAlert(message: message)
+        showAlert(title: "Error", message: message)
     }
     
-    func showAlert(message: String) {
+    private func showAlert(title: String, message: String) {
         let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        let alertVC = UIAlertController(title: "Error Message", message: message, preferredStyle: .alert)
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(cancelAction)
         self.present(alertVC, animated: true, completion: nil)
     }
@@ -128,7 +128,7 @@ extension WeatherInfoViewController: UISearchBarDelegate {
         if presenter.searchName.count >= 3 {
             presenter.loadWeatherInfo(name: presenter.searchName)
         } else {
-            showAlert(message: "Search term length must be from 3 characters or above")
+            showAlert(title: "Warning", message: "Search term length must be from 3 characters or above")
         }
         
         searchBar.resignFirstResponder()

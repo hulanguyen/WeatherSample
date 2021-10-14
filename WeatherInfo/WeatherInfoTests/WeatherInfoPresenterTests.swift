@@ -6,14 +6,18 @@
 //
 
 import XCTest
+import RxSwift
 @testable import WeatherInfo
 
 class WeatherInfoPresenterTests: XCTestCase {
 
     var sut: WeatherInfoPresenter!
+    var service: MockService!
+    let disposeBag = DisposeBag()
     
     override func setUpWithError() throws {
-        let interactor = WeatherInfoInteractor(service: NetworksAPI())
+        service = MockService()
+        let interactor = WeatherInfoInteractor(service: service)
         sut = WeatherInfoPresenter(interactor: interactor)
     }
 
@@ -21,4 +25,48 @@ class WeatherInfoPresenterTests: XCTestCase {
         sut = nil
     }
 
+    func test_loadWeatherInfo_Success() throws {
+        service.data = try MockData.createMockWeatherData(name: "WeatherForcast_Saigon")
+        let expected = expectation(description: "Get data success")
+        var outputData : [WeatherData] = []
+        sut
+            .listWeatherForcast
+            .skip(1)
+            .subscribe { data in
+                outputData = data
+                expected.fulfill()
+            } onError: { _ in
+            } .disposed(by: disposeBag)
+        
+        sut.loadWeatherInfo(name: "saigon")
+        
+        wait(for: [expected], timeout: 0.2)
+        XCTAssertEqual(7, outputData.count)
+//        XCTAssertEqual(1006, outputData.first?.pressure)
+        XCTAssertEqual(75, outputData.first?.humidity)
+    }
+    
+    func test_loadWeatherInfo_CityNotFound() {
+        service.error = ResponseError.clientError(error: ErrorData(code: "404", message: "city not found"))
+        let expected = expectation(description: "Get data success")
+        var error : ResponseError = .unknowError
+        
+        sut
+            .error
+            .subscribe { resError in
+                if let rErr = resError as? ResponseError {
+                    error = rErr
+                }
+                expected.fulfill()
+            } onError: { _ in
+            }.disposed(by: disposeBag)
+        sut.loadWeatherInfo(name: "saigon")
+        wait(for: [expected], timeout: 0.2)
+        switch error {
+        case .clientError(let error):
+            XCTAssertEqual("city not found", error.message)
+        default:
+            break
+        }
+    }
 }

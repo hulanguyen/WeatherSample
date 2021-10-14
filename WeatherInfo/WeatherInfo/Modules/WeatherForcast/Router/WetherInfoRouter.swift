@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Router {
+class WeatherInfoRouter {
     
     func initialViewController() -> WeatherInfoViewController {
         let interactor = WeatherInfoInteractor(service: NetworksAPI())

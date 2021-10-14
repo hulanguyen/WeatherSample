@@ -27,7 +27,7 @@ class WeatherInfoTableViewCell: UITableViewCell {
     
     func setup(data: WeatherData) {
         dateLabel.text = data.dt.getDateWithFormat(.DDddMMyyyy)
-        temperatureLabel.text = "\(data.temp.day) °C"
+        temperatureLabel.text =  String(format: "%0.2f °C", data.temp.average)
         humidityLabel.text = "\(data.humidity)"
         pressureLabel.text = "\(data.pressure)"
         descriptionLabel.text = data.weather.first?.description

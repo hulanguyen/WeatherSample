@@ -80,7 +80,6 @@ final class NetworksAPI: WebServices {
                 task.cancel()
             }
         }
-        
         return result
     }
 }

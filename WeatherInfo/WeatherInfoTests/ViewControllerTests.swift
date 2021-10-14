@@ -14,7 +14,7 @@ class ViewControllerTests: XCTestCase {
     
     override func setUpWithError() throws {
         
-        sut = Router().initialViewController()
+        sut = WeatherInfoRouter().initialViewController()
         _ = sut.view
     }
 

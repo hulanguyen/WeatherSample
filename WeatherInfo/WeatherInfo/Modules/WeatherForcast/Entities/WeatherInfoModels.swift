@@ -13,6 +13,11 @@ struct WeatherModel: Codable {
 
 struct Temp: Codable {
     let day: Double
+    let min: Double
+    let max: Double
+    var average: Double {
+        (min + max) / 2
+    }
 }
 
 struct Weather: Codable {

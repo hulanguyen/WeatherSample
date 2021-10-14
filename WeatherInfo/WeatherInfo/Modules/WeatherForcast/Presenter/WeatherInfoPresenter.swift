@@ -34,13 +34,13 @@ class WeatherInfoPresenter {
             .weatherDatas
             .subscribe { [weak self] weatherData in
                 self?.listWeatherForcast.accept(weatherData)
-            } onError: { _ in
-            } .disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
         
         interactor.error.subscribe { [weak self] error in
             self?.error.onNext(error)
-        } onError: { _ in
-        }.disposed(by: disposeBag)
+        }
+        .disposed(by: disposeBag)
 
     }
 }
