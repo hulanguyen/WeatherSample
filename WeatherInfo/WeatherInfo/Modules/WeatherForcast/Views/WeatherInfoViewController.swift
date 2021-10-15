@@ -39,18 +39,18 @@ class WeatherInfoViewController: UIViewController {
         setupSearchBar()
     }
 
-    func setupSearchBar() {
+    private func setupSearchBar() {
         searchBar.delegate = self
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         let cell = UINib(nibName: ConstantKeys.kweatherInfoCellNibName, bundle: nil)
         tableView.register(cell, forCellReuseIdentifier: ConstantKeys.kWeatherInfoCellReuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-    func bindViewModel() {
+    private func bindViewModel() {
         presenter.listWeatherForcast
             .observe(on: MainScheduler.instance)
             .subscribe { [weak self] _ in
@@ -60,34 +60,14 @@ class WeatherInfoViewController: UIViewController {
         bindErrorData()
     }
     
-    func bindErrorData() {
+    private func bindErrorData() {
         presenter
-            .error
+            .errorMessage
             .observe(on: MainScheduler.instance)
-            .subscribe { [weak self] error in
-                self?.handleErrorMessage(error: error)
+            .subscribe { [weak self] message in
+                self?.showAlert(title: ConstantKeys.kErrorTitleAlert, message: message)
             }
             .disposed(by: disposeBag)
-    }
-    
-    func handleErrorMessage(error: Error) {
-        guard let resError = error as? ResponseError else {
-            return
-        }
-        var message = ""
-        switch resError {
-        case .netWorkNotFound:
-            message = "Net work not found. Please check your connection."
-        case .clientError(let error):
-            message = error.message
-        case .serverError(let error):
-            message = error.localizedDescription
-        case .parsingError:
-            message = "Can not parse data response on server."
-        case .unknowError:
-            message = "Unknow issue"
-        }
-        showAlert(title: "Error", message: message)
     }
     
     private func showAlert(title: String, message: String) {
@@ -128,7 +108,7 @@ extension WeatherInfoViewController: UISearchBarDelegate {
         if presenter.searchName.count >= 3 {
             presenter.loadWeatherInfo(name: presenter.searchName)
         } else {
-            showAlert(title: "Warning", message: "Search term length must be from 3 characters or above")
+            showAlert(title: ConstantKeys.kWarningTitleAlert, message: ConstantKeys.kWaringMessageSearchNameLessThan3)
         }
         
         searchBar.resignFirstResponder()
