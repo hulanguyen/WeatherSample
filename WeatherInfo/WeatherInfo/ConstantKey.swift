@@ -19,8 +19,8 @@ class ConstantKeys {
     static let kErrorMessageParsingFailed = "Can not parse data response on server."
     static let kErrorMessageUnknowIssue = "Unknow issue"
     static let kWaringMessageSearchNameLessThan3 = "Search term length must be from 3 characters or above"
-    static let kWarningTitleAlert = "Waring"
-    static let kErrorTitleAlert = "Title"
+    static let kWarningTitleAlert = "Warning"
+    static let kErrorTitleAlert = "Error"
 }
 
 enum Endpoint: String {
