@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxRelay
 
-class WeatherInfoPresenter {
+class WeatherInfoPresenter: ErrorMessage {
     
     private let disposeBag = DisposeBag()
     
@@ -29,7 +29,7 @@ class WeatherInfoPresenter {
         interactor.getWeatherForcast(name: name)
     }
 
-    func bindInteractor() {
+    private func bindInteractor() {
         interactor
             .weatherDatas
             .subscribe(onNext: { [weak self] weatherData in
@@ -55,7 +55,13 @@ class WeatherInfoPresenter {
             .disposed(by: disposeBag)
         
     }
-    
+}
+
+protocol ErrorMessage {
+    func getErrorMessage(error: Error) -> String
+}
+
+extension ErrorMessage {
     func getErrorMessage(error: Error) -> String {
         guard let resError = error as? ResponseError else {
             return ""

@@ -44,7 +44,7 @@ final class WebServices: NetworkServices {
             }
         }
         
-        if let _ = URLCache.shared.cachedResponse(for: urlRequest) {
+        if let _ = CacheManager.shared.cache.getCacheResponse(for: urlRequest) {
             
         } else {
             guard Reachability.isInternetAvailable() else {
