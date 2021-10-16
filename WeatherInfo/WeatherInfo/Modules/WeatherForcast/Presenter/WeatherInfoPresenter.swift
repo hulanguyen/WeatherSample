@@ -15,10 +15,10 @@ class WeatherInfoPresenter {
     
     private let interactor: WeatherInfoInteractor
     
-    
-    public var listWeatherForcast = BehaviorRelay<[WeatherData]>(value: [])
-    public var errorMessage = PublishSubject<String>()
-    public var searchName: String = ""
+    var headerTitle :String =  ""
+    let listWeatherForcast = BehaviorRelay<[WeatherData]>(value: [])
+    let errorMessage = PublishSubject<String>()
+    var searchName: String = ""
     
     init(interactor: WeatherInfoInteractor) {
         self.interactor = interactor
@@ -32,15 +32,28 @@ class WeatherInfoPresenter {
     func bindInteractor() {
         interactor
             .weatherDatas
-            .subscribe { [weak self] weatherData in
+            .subscribe(onNext: { [weak self] weatherData in
                 self?.listWeatherForcast.accept(weatherData)
-            }
+            })
             .disposed(by: disposeBag)
         
-        interactor.error.subscribe { [weak self] error in
-            self?.errorMessage.onNext(self?.getErrorMessage(error: error) ?? "")
-        }
-        .disposed(by: disposeBag)
+
+        interactor
+            .error
+            .subscribe(onNext: { [weak self] error in
+                guard let self = self else {return}
+                self.errorMessage.onNext(self.getErrorMessage(error: error))
+            })
+            .disposed(by: disposeBag)
+        
+        interactor
+            .cityInfo
+            .subscribe(onNext: { [weak self] cityInfo in
+                let headerTitle = "\(cityInfo.name), \(cityInfo.country)"
+                self?.headerTitle = headerTitle
+            })
+            .disposed(by: disposeBag)
+        
     }
     
     func getErrorMessage(error: Error) -> String {

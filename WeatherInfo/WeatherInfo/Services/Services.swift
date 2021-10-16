@@ -20,7 +20,7 @@ public enum HTTPMethod: String {
     case connect = "CONNECT"
 }
 
-protocol WebServices {
+protocol NetworkServices {
     func request<T: Codable>(
         url: URL,
         method: HTTPMethod,

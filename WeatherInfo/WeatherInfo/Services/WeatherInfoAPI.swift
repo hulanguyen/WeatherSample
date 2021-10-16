@@ -9,9 +9,9 @@ import Foundation
 import RxSwift
 
 struct WeatherInfoAPI {
-    let service: WebServices
+    let service: NetworkServices
     
-    init(service: WebServices) {
+    init(service: NetworkServices) {
         self.service = service
     }
     

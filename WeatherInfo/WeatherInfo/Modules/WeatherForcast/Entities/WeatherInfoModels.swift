@@ -8,6 +8,7 @@
 import Foundation
 
 struct WeatherModel: Codable {
+    let city: CityInfo
     let list: [WeatherData]
 }
 
@@ -43,4 +44,9 @@ struct ErrorData: Codable {
         case message
         case code = "cod"
     }
+}
+
+struct CityInfo: Codable {
+    let name: String
+    let country: String
 }

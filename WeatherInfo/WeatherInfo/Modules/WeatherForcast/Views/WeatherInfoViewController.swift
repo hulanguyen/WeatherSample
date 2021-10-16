@@ -90,7 +90,11 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        160.0
+        ConstantKeys.kHeightOfWeatherInfoCell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        presenter.headerTitle
     }
 }
 

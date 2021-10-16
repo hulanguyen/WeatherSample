@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 @testable import WeatherInfo
 
-class MockService: WebServices {
+class MockService: NetworkServices {
     
     var data: Data? = nil
     var error : Error? = nil

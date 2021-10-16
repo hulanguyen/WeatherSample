@@ -10,7 +10,7 @@ import Foundation
 class WeatherInfoRouter {
     
     func initialViewController() -> WeatherInfoViewController {
-        let interactor = WeatherInfoInteractor(service: NetworksAPI())
+        let interactor = WeatherInfoInteractor(service: WebServices())
         let presenter = WeatherInfoPresenter(interactor: interactor)
         let weatherInfoController = WeatherInfoViewController(presenter: presenter)
         return weatherInfoController

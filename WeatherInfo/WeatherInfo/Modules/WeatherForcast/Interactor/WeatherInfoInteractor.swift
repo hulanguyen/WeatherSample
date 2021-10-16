@@ -10,13 +10,13 @@ import RxSwift
 import RxRelay
 
 class WeatherInfoInteractor {
-    private var service: WebServices
+    private var service: NetworkServices
     private var disposedBag = DisposeBag()
     let error = PublishSubject<Error>()
     let weatherDatas = PublishSubject<[WeatherData]>()
-    var searchname: String = ""
+    let cityInfo = PublishSubject<CityInfo>()
     
-    init(service: WebServices) {
+    init(service: NetworkServices) {
         self.service = service
     }
     
@@ -27,6 +27,7 @@ class WeatherInfoInteractor {
         api.startRequest(query: query)
             .subscribe { weatherRes in
                 self.weatherDatas.onNext(weatherRes.list)
+                self.cityInfo.onNext(weatherRes.city)
         } onError: { error in
             self.error.onNext(error)
         }

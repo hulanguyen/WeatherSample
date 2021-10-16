@@ -17,7 +17,7 @@ enum ResponseError: Error {
     case unknowError
 }
 
-final class NetworksAPI: WebServices {
+final class WebServices: NetworkServices {
    
     func request<T: Codable>(url: URL,
                              method: HTTPMethod,
@@ -25,12 +25,7 @@ final class NetworksAPI: WebServices {
                              headers: [String: String],
                              parameters: [String : Any]?,
                              cachePolicy: URLRequest.CachePolicy) -> Observable<T> {
-        guard Reachability.isInternetAvailable() else {
-            return Observable<T>.create({ observer -> Disposable in
-                observer.onError(ResponseError.netWorkNotFound)
-                return Disposables.create()
-            })
-        }
+        
         // create the request
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.rawValue
@@ -46,6 +41,17 @@ final class NetworksAPI: WebServices {
                 urlRequest.httpBody = data
             } catch {
                 fatalError("Make sure the parameters can be endcoded \nReceived parameter: \(parameters)")
+            }
+        }
+        
+        if let _ = URLCache.shared.cachedResponse(for: urlRequest) {
+            
+        } else {
+            guard Reachability.isInternetAvailable() else {
+                return Observable<T>.create({ observer -> Disposable in
+                    observer.onError(ResponseError.netWorkNotFound)
+                    return Disposables.create()
+                })
             }
         }
         let result = Observable<T>.create { observer -> Disposable in
@@ -82,4 +88,6 @@ final class NetworksAPI: WebServices {
         }
         return result
     }
+    
+    
 }

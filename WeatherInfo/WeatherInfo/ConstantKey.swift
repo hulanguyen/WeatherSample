@@ -8,7 +8,7 @@
 import Foundation
 
 class ConstantKeys {
-    static let kWeatherSearchScreenNavigationTitle = "Weather Forecase"
+    static let kWeatherSearchScreenNavigationTitle = "Weather Forecast"
     static let kNilValueDisplay = "N/A"
     static let kWeatherInfoCellReuseIdentifier = "WeatherInfoCellReuseIdentifier"
     static let kweatherInfoCellNibName = "WeatherInfoTableViewCell"
@@ -21,6 +21,7 @@ class ConstantKeys {
     static let kWaringMessageSearchNameLessThan3 = "Search term length must be from 3 characters or above"
     static let kWarningTitleAlert = "Warning"
     static let kErrorTitleAlert = "Error"
+    static let kHeightOfWeatherInfoCell: Double = 160.0
 }
 
 enum Endpoint: String {
