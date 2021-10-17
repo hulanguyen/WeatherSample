@@ -30,7 +30,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon, 10 Jun 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPh-2X-wGu" userLabel="Date Label">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon, 10 Jun 2021" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPh-2X-wGu" userLabel="Date Label">
                                         <rect key="frame" x="44.5" y="0.0" width="185.5" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
@@ -47,7 +47,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNI-tW-P1B" userLabel="Temperature Label">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="30" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNI-tW-P1B" userLabel="Temperature Label">
                                         <rect key="frame" x="152.5" y="0.0" width="77.5" height="39.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
@@ -64,7 +64,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="1018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfe-5F-M60" userLabel="Pressure Label">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="1018" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfe-5F-M60" userLabel="Pressure Label">
                                         <rect key="frame" x="71" y="0.0" width="159" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
@@ -81,7 +81,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="59%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GpY-NT-lfb" userLabel="Humidity Label">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="59%" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GpY-NT-lfb" userLabel="Humidity Label">
                                         <rect key="frame" x="72" y="0.0" width="158" height="39.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
@@ -98,7 +98,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="sadfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfdasfasdf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgU-aB-7aw" userLabel="Description Label">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="sadfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfdasfasdf" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgU-aB-7aw" userLabel="Description Label">
                                         <rect key="frame" x="88.5" y="0.0" width="141.5" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
@@ -134,6 +134,16 @@
                 <outlet property="iconImageView" destination="jtz-bJ-rup" id="8aF-Ka-7Nc"/>
                 <outlet property="pressureLabel" destination="Qfe-5F-M60" id="88J-Oo-V8w"/>
                 <outlet property="temperatureLabel" destination="jNI-tW-P1B" id="fHZ-QS-Bk8"/>
+                <outletCollection property="listLabels" destination="HN3-mq-qpJ" collectionClass="NSMutableArray" id="hJN-Jq-Lvd"/>
+                <outletCollection property="listLabels" destination="XJH-gL-ICY" collectionClass="NSMutableArray" id="qr0-9F-LA7"/>
+                <outletCollection property="listLabels" destination="6nC-Iy-eeU" collectionClass="NSMutableArray" id="NGc-Hf-e7p"/>
+                <outletCollection property="listLabels" destination="37A-dB-qbC" collectionClass="NSMutableArray" id="lOs-HK-AVS"/>
+                <outletCollection property="listLabels" destination="8FB-el-aBh" collectionClass="NSMutableArray" id="Gdi-eU-wcC"/>
+                <outletCollection property="listLabels" destination="DPh-2X-wGu" collectionClass="NSMutableArray" id="YGb-oD-1Jv"/>
+                <outletCollection property="listLabels" destination="jNI-tW-P1B" collectionClass="NSMutableArray" id="wGP-Cd-UXU"/>
+                <outletCollection property="listLabels" destination="Qfe-5F-M60" collectionClass="NSMutableArray" id="aAy-Om-2Ae"/>
+                <outletCollection property="listLabels" destination="GpY-NT-lfb" collectionClass="NSMutableArray" id="8Rp-59-xvZ"/>
+                <outletCollection property="listLabels" destination="VgU-aB-7aw" collectionClass="NSMutableArray" id="xU7-5e-MDI"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="157.70089285714286"/>
         </tableViewCell>

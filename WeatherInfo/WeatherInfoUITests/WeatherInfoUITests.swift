@@ -91,7 +91,7 @@ class WeatherInfoUITests: XCTestCase {
         alertButton.tap()
         XCTAssertFalse(alert.element.exists)
         searchField.buttons["Clear text"].tap()
-        XCTAssertEqual("Enter name of city", searchField.label)
+        XCTAssertEqual("Search Bar Text Field", searchField.label)
         let cancelSearch = app/*@START_MENU_TOKEN@*/.staticTexts["Cancel"]/*[[".buttons[\"Cancel\"].staticTexts[\"Cancel\"]",".staticTexts[\"Cancel\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         XCTAssertTrue(cancelSearch.exists)
         cancelSearch.tap()

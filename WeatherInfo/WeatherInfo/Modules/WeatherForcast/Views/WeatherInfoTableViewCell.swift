@@ -17,6 +17,9 @@ class WeatherInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    
+    @IBOutlet var listLabels: [UILabel]!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -35,6 +38,13 @@ class WeatherInfoTableViewCell: UITableViewCell {
         guard let icon = data.weather.first?.icon, let url = URL(string: "https://openweathermap.org/img/wn/\(icon)@2x.png") else {return}
         iconImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         iconImageView?.sd_setImage(with: url, completed: nil)
+        applyAccessibility()
     }
     
+    private func applyAccessibility() {
+        for infoLable in listLabels {
+            infoLable.font = UIFont.preferredFont(forTextStyle: .body)
+            infoLable.adjustsFontForContentSizeCategory = true
+        }
+    }
 }
