@@ -78,7 +78,9 @@ class WeatherInfoUITests: XCTestCase {
         XCTAssertTrue(button.exists)
         button.tap()
         
+        
         let alert = app.alerts["Error"].scrollViews.otherElements
+        _ = alert.element.waitForExistence(timeout: 3)
         XCTAssertTrue(alert.element.exists)
         let alertTitle = alert.staticTexts["Error"]
         XCTAssertTrue(alertTitle.exists)
