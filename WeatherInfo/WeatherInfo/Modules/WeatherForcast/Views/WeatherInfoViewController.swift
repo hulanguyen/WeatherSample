@@ -52,6 +52,8 @@ class WeatherInfoViewController: UIViewController {
         tableView.register(cell, forCellReuseIdentifier: ConstantKeys.kWeatherInfoCellReuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.estimatedRowHeight = ConstantKeys.kHeightOfWeatherInfoCell
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     private func bindViewModel() {
@@ -80,6 +82,8 @@ class WeatherInfoViewController: UIViewController {
         alertVC.addAction(cancelAction)
         self.present(alertVC, animated: true, completion: nil)
     }
+    
+    
 }
 
 extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource {
@@ -93,9 +97,9 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        ConstantKeys.kHeightOfWeatherInfoCell
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        ConstantKeys.kHeightOfWeatherInfoCell
+//    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         presenter.headerTitle
@@ -104,12 +108,24 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
         let myLabel = UILabel()
-        myLabel.frame = CGRect(x: 10, y: 0, width: 320, height: 20)
+        
         myLabel.font = UIFont.boldSystemFont(ofSize: 18)
         myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+        myLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        myLabel.adjustsFontForContentSizeCategory = true
         
         let headerView = UIView()
         headerView.addSubview(myLabel)
+        
+        
+            myLabel.translatesAutoresizingMaskIntoConstraints = false
+            let topAnchor = myLabel.topAnchor.constraint(equalTo: headerView.topAnchor)
+            let bottomAnchor = myLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor)
+            let leadingAnchor = myLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 10)
+            let trailingAnchor = myLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor)
+            NSLayoutConstraint.activate([topAnchor, bottomAnchor, leadingAnchor, trailingAnchor])
+        
+        
         headerView.backgroundColor = view.backgroundColor
         return headerView
     }
