@@ -9,10 +9,10 @@ import Foundation
 import RxSwift
 import RxRelay
 
-class WeatherInfoInteractor {
+class WeatherInfoInteractor: ErrorMessage {
     private var service: NetworkServices
     private var disposedBag = DisposeBag()
-    let error = PublishSubject<Error>()
+    let error = PublishSubject<String>()
     let weatherDatas = PublishSubject<[WeatherData]>()
     let cityInfo = PublishSubject<CityInfo>()
     
@@ -29,7 +29,7 @@ class WeatherInfoInteractor {
                 self.weatherDatas.onNext(weatherRes.list)
                 self.cityInfo.onNext(weatherRes.city)
         } onError: { error in
-            self.error.onNext(error)
+            self.error.onNext(self.getErrorMessage(error: error))
         }
         .disposed(by: disposedBag)
     }

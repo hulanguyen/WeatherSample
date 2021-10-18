@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxRelay
 
-class WeatherInfoPresenter: ErrorMessage {
+class WeatherInfoPresenter {
     
     private let disposeBag = DisposeBag()
     
@@ -42,7 +42,7 @@ class WeatherInfoPresenter: ErrorMessage {
             .error
             .subscribe(onNext: { [weak self] error in
                 guard let self = self else {return}
-                self.errorMessage.onNext(self.getErrorMessage(error: error))
+                self.errorMessage.onNext(error)
             })
             .disposed(by: disposeBag)
         
@@ -54,31 +54,5 @@ class WeatherInfoPresenter: ErrorMessage {
             })
             .disposed(by: disposeBag)
         
-    }
-}
-
-protocol ErrorMessage {
-    func getErrorMessage(error: Error) -> String
-}
-
-extension ErrorMessage {
-    func getErrorMessage(error: Error) -> String {
-        guard let resError = error as? ResponseError else {
-            return ""
-        }
-        var message = ""
-        switch resError {
-        case .netWorkNotFound:
-            message = ConstantKeys.kErrorMessageNetWorkNotFound
-        case .clientError(let error):
-            message = error.message
-        case .serverError(let error):
-            message = error.localizedDescription
-        case .parsingError:
-            message = ConstantKeys.kErrorMessageParsingFailed
-        case .unknowError:
-            message = ConstantKeys.kErrorMessageUnknowIssue
-        }
-        return message
     }
 }

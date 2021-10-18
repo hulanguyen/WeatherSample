@@ -63,44 +63,4 @@ class WeatherInfoPresenterTests: XCTestCase {
         
         XCTAssertEqual("city not found", errorMess)
     }
-    
-    func test_getErrorMessage_NetWorNotFound() {
-        let message = sut.getErrorMessage(error: ResponseError.netWorkNotFound)
-        XCTAssertEqual(ConstantKeys.kErrorMessageNetWorkNotFound, message)
-    }
-    
-    func test_getErrorMessage_ClientError() {
-        let message = sut.getErrorMessage(error: ResponseError.clientError(error: ErrorData(code: "401", message: "Cannot authorize")))
-        XCTAssertEqual("Cannot authorize", message)
-    }
-    
-    func test_getErrorMessage_ServerError() {
-        struct ServerError: Error {
-            let code : String
-            let des: String
-        }
-        let error = ServerError(code: "500", des: "serverError")
-        let message = sut.getErrorMessage(error: ResponseError.serverError(error: error))
-        XCTAssertEqual(error.localizedDescription, message)
-    }
-    
-    func test_getErrorMessage_ParsingError() {
-        let message = sut.getErrorMessage(error: ResponseError.parsingError)
-        XCTAssertEqual(ConstantKeys.kErrorMessageParsingFailed, message)
-    }
-    
-    func test_getErrorMessage_UnknowError() {
-        let message = sut.getErrorMessage(error: ResponseError.unknowError)
-        XCTAssertEqual(ConstantKeys.kErrorMessageUnknowIssue, message)
-    }
-    
-    func test_getErrorMessage_EmptyString() {
-        struct ServerError: Error {
-            let code : String
-            let des: String
-        }
-        let error = ServerError(code: "500", des: "serverError")
-        let message = sut.getErrorMessage(error: error)
-        XCTAssertEqual("", message)
-    }
 }

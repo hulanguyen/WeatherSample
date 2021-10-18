@@ -1,9 +1,10 @@
 # WeatherSample
 
-#1: Brief explanation for the software development principles, patterns & practices being applied
-- Using swift 5, xcode 13 for development.
-- Usded swift package for handle dependency.
-- Applied VIPER pattern for the architecture of app. 
+#1: Software development principles, patterns & practices being applied
+- Base on clean architecture with SOLID principle for building app.
+- Applied VIPER pattern for the architecture of app which base on Single responsibility to seperate to classes to distint role.
+- This is not trickly VIPER architect which each module communicate through protocol. In this app those component directly talking with each others, View owns Presenter, Presenter owns Interactor and they talking through Observer by using Rxswift. 
+- API serivces and cache services build base on Dependency Inversion principle.
 
 
 #2: Code folder structure and libraries and frameworks being used
@@ -24,17 +25,21 @@ WeatherInfo:
  Services: 
  - Contains Api service and cache services code.
  
+ - Applied URLCache for caching API request.
 ##Third party: 
-### RxSwift: ussed for binddata and passed data between boundary 
-### SDWebimage: used for loading and cached image.
-Applied URLCache for caching API request.
+- RxSwift: ussed for binddata and passed data between boundary 
+- SDWebimage: used for loading and cached image.
+
 
 #3. All the required steps in order to get the application run on local computer:
 
+
+- Usded swift package for handle dependency.
 - git clone git@github.com:
-- open project and wait for it loading all package dependencies
+- Open project and wait for it loading all package dependencies
 - build and run the app with simulator.
 - Deloyment target only support for iOS 13 and above
+Note: current app development: using swift 5, xcode 13.
 
 #4. Checklist of items:
 
@@ -52,3 +57,4 @@ b. Scaling Text: Display size and font size:
 #5. What need to improved for app? 
 1. UI need to more dynamic for adapt dynamic font size
 2. Update code for fixing warning for 
+3. Updapted code for more trickly VIPER architecture which each modules communicate through the prototol. 
