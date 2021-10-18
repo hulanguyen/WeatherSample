@@ -25,12 +25,14 @@ WeatherInfo:
  Services: 
  - Contains Api service and cache services code.
  
- ### Structure image:
+ ### Structures:
  
  <img src="./imageReadme/structureFolder.jpg" width="50%">
  
  - Applied URLCache for caching API request.
+ [HTTP Cacheing](https://developer.apple.com/documentation/foundation/nsurlrequestcachepolicy/nsurlrequestuseprotocolcachepolicy)
  
+  <img src="./imageReadme/URLCache.jpg" width="50%">
  
 ## Third party: 
 - RxSwift: ussed for binddata and passed data between boundary 
@@ -49,19 +51,19 @@ Note: current app development which using swift 5, xcode 13.
 
 # 4. Checklist of items:
 
-Done 1. Programming language: Swift.
-Done 2. Design app's architecture VIPER
-Done 3. UI should be looks like in attachment.
-Done 4. Write UnitTests
-Done 5. Acceptance Tests
-Done 6. Exception handling
-Done 7. Caching handling
-Done 8. Accessibility for Disability Supports:
-a. VoiceOver: Use a screen reader.
-b. Scaling Text: Display size and font size:
+ 1. Programming language: Swift -> Done.
+ 2. Design app's architecture VIPER -> Done.
+ 3. UI should be looks like in attachment. -> Done.
+ 4. Write UnitTests -> Done
+ 5. Acceptance Tests -> Done
+ 6. Exception handling -> Done
+ 7. Caching handling -> Done
+ 8. Accessibility for Disability Supports:
+    a. VoiceOver: Use a screen reader. -> Done
+    b. Scaling Text: Display size and font size -> Done
  
 # 5. What need to improved for app? 
 1. UI need to more dynamic for adapt dynamic font size
 2. Update code for fixing warning for 
 3. Updapted code for more trickly VIPER architecture which each modules communicate through the prototol. 
-3. Enhance cache services.
+. Enhance cache services.
