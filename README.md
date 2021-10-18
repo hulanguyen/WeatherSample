@@ -69,6 +69,6 @@ Note: current app development which using swift 5, xcode 13.
 
 # 5. Sequence diagram: 
 
-  <img src="./imageReadme/WeatherSequenceDiagram.jpg" width="50%">
+  <img src="./imageReadme/WeatherSequenceDiagram.jpg" width="100%">
    
 
