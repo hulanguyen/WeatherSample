@@ -1,13 +1,13 @@
 # WeatherSample
 
-# 1: Software development principles, patterns & practices being applied
+# 1. Software development principles, patterns & practices being applied
 - Applied VIPER pattern to build the application on the Single Responsibility Principle
 - This is not trickly VIPER architect which each module communicate through protocol. 
 In this app those component directly talking with each others, View owns Presenter, Presenter owns Interactor and they talking through Observer by using Rxswift. 
 - API serivces and cache services build base on Dependency Inversion principle.
 
 
-# 2: Code folder structure and libraries and frameworks being used
+# 2. Code folder structure and libraries and frameworks being used
 ## It have 3 main folders: 
 - WeatherInfo: content source code
 - WeatherInfoTests: Contains code for unit tests
@@ -61,9 +61,10 @@ Note: current app development which using swift 5, xcode 13.
  6. Exception handling -> Done
  7. Caching handling -> Done
  8. Accessibility for Disability Supports:
+    ```
     a. VoiceOver: Use a screen reader. -> Done
     b. Scaling Text: Display size and font size -> Done
-    
+    ```
 
 
 # 5. Sequence diagram: 
