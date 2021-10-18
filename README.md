@@ -47,6 +47,8 @@ WeatherInfo:
 - Open project and wait for it loading all package dependencies
 - build and run the app with simulator.
 - Deloyment target only support for iOS 13 and above
+- App default loading weather of "saigon" when starting. 
+- App default clear cach after 2 days. And this checking after launching app.
 Note: current app development which using swift 5, xcode 13.
 
 # 4. Checklist of items:
