@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         CacheManager.shared.cache.createCacheStore(memoryCapacity: 50*1024*1024, diskCapacity: 500*1024*1024)
-        CacheManager.shared.cache.clearCacheAfterDuration(2)
+        CacheManager.shared.cache.clearCacheAfterDay(2)
         return true
     }
 

@@ -24,7 +24,7 @@ class LocalCache: CacheServices {
         URLCache.shared.removeAllCachedResponses()
     }
     
-    func clearCacheAfterDuration(_ day: Int) {
+    func clearCacheAfterDay(_ day: Int) {
         guard let saveDate = UserDefaults.standard.value(forKey: "saveDate") as? Date else {
             debugPrint("create date")
             UserDefaults.standard.set(Date(), forKey: "saveDate")

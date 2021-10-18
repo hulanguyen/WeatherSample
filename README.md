@@ -35,15 +35,15 @@ WeatherInfo:
   <img src="./imageReadme/URLCache.jpg" width="50%">
  
 ## Third party: 
-- RxSwift: ussed for binddata and passed data between boundary 
-- SDWebimage: used for loading and cached image.
+- [RxSwift](https://github.com/ReactiveX/RxSwift) : ussed for passing data between boundary 
+- [SDWebImage](https://github.com/SDWebImage/SDWebImage) : used for loading and cached image.
 
 
 # 3. All the required steps in order to get the application run on local computer:
 
 
 - Usded swift package for handle dependency.
-- git clone git@github.com:
+- git clone https://github.com/hulanguyen/WeatherSample.git
 - Open project and wait for it loading all package dependencies
 - build and run the app with simulator.
 - Deloyment target only support for iOS 13 and above
@@ -61,9 +61,11 @@ Note: current app development which using swift 5, xcode 13.
  8. Accessibility for Disability Supports:
     a. VoiceOver: Use a screen reader. -> Done
     b. Scaling Text: Display size and font size -> Done
- 
-# 5. What need to improved for app? 
-1. UI need to more dynamic for adapt dynamic font size
-2. Update code for fixing warning for 
-3. Updapted code for more trickly VIPER architecture which each modules communicate through the prototol. 
-. Enhance cache services.
+    
+
+
+# 5. Sequence diagram: 
+
+  <img src="./imageReadme/WeatherSequenceDiagram.jpg" width="50%">
+   
+

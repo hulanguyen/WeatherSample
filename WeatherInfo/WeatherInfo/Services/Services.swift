@@ -34,5 +34,5 @@ protocol CacheServices {
     func createCacheStore(memoryCapacity: Int, diskCapacity: Int)
     func getCacheResponse(for request: URLRequest) -> CachedURLResponse?
     func clearAllCache()
-    func clearCacheAfterDuration(_ day: Int) 
+    func clearCacheAfterDay(_ day: Int) 
 }
